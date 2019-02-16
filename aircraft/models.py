@@ -12,8 +12,8 @@ class TestFlightType(models.Model):
         ("out_school", "学外"),
         ("contest", "鳥コン")
     )
-    status = models.CharField(verbose_name="TFタイプ", choices=STATUS_CHOICES, default="in_school")
-    location = models.CharField(verbose_name="滑走路", null=True)
+    status = models.CharField(verbose_name="TFタイプ", max_length=50, choices=STATUS_CHOICES, default="in_school")
+    location = models.CharField(verbose_name="滑走路", max_length=50, null=True)
     pub_time = models.DateTimeField(verbose_name="時間", default=now)
     aircraft = models.ForeignKey(
         Aircraft,
@@ -41,7 +41,7 @@ class FlightType(models.Model):
         ('lf', '長距離'),
     )
     number = models.IntegerField(verbose_name='本数')
-    status = models.CharField(verbose_name='タイプ', choices=STATUS_CHOICES, default='n')
+    status = models.CharField(verbose_name='タイプ', max_length=10, choices=STATUS_CHOICES, default='n')
     created_time = models.DateTimeField(verbose_name='開始時間', default=now, unique=True)
     tf_type = models.ForeignKey(
         TestFlightType,
