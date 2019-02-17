@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Aircraft, TestFlightType, FlightType, FlightData
+from .utils import ChoiceDisplayField
 
 
 class FlightDataSerializer(serializers.ModelSerializer):
@@ -9,7 +10,7 @@ class FlightDataSerializer(serializers.ModelSerializer):
 
 
 class FlightTypeSerializer(serializers.ModelSerializer):
-    flightdata_set = FlightDataSerializer(many=True, read_only=True)
+    #    flightdata_set = FlightDataSerializer(many=True, read_only=True)
 
     class Meta:
         model = FlightType
@@ -17,7 +18,13 @@ class FlightTypeSerializer(serializers.ModelSerializer):
 
 
 class TestFlightTypeSerializer(serializers.ModelSerializer):
-    flighttype_set = FlightTypeSerializer(many=True, read_only=True)
+    #    flighttype_set = FlightTypeSerializer(many=True, read_only=True)
+    STATUS_CHOICES = (
+        ("in_school", "学内"),
+        ("out_school", "学外"),
+        ("contest", "鳥コン")
+    )
+    status = ChoiceDisplayField(choices=STATUS_CHOICES)
 
     class Meta:
         model = TestFlightType
@@ -25,8 +32,9 @@ class TestFlightTypeSerializer(serializers.ModelSerializer):
 
 
 class AircraftSerializer(serializers.ModelSerializer):
-    tf_set = TestFlightTypeSerializer(many=True, read_only=True)
+    # tf_set = TestFlightTypeSerializer(many=True, read_only=True)
 
     class Meta:
         model = Aircraft
         fields = '__all__'  # ('name', 'created_time')也可以用这种方式指定字段
+        depth = 1

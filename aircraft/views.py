@@ -39,14 +39,14 @@ def home(request):
 
 
 def js(request, filename):
-    with open('templates/{}'.format(filename), 'rb') as f:
+    with open('templates/js/{}'.format(filename), 'rb') as f:
         content = f.read()
     return HttpResponse(content=content,
                         content_type='application/javascript')
 
 
 def css(request, filename):
-    with open('templates/{}'.format(filename), 'rb') as f:
+    with open('templates/css/{}'.format(filename), 'rb') as f:
         content = f.read()
     return HttpResponse(content=content,
                         content_type='text/css')
