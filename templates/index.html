@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HOGEHOGEHOGE</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> <!-- Vue开发版 -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <style>
+        body {
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12" id="aircraft">
+            <h1 class="text-center">{{ id }}: {{ name }}</h1>
+        </div>
+        <div id="tf_data" v-show="info">
+            <div v-for="items in info">
+                <div class="col-xs-3" v-for="(value, key) in items">
+                    {{ key }} : {{ value }}
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <h3 class="text-center">TFタイプ：</h3>
+            </div>
+            <div class="col-xs-3">
+                <h3 class="text-center">日付：</h3>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <h3 class="text-center"></h3>
+            <div class="dropdown">
+                <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+                    滑走试验一本目<span
+                        class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation" class="dropdown-header">滑走試験</li>
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">1本目</a>
+                    </li>
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">2本目</a>
+                    </li>
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">3本目</a>
+                    </li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation" class="dropdown-header">ジャンプ試験</li>
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">1本目</a>
+                    </li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation" class="dropdown-header">ジ短距離飛行試験</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row" id="flight_data">
+        <div class="col-xs-12" id="height">
+            <p onmouseover="drewGraph()"> 高度： {{ height }}</p>
+        </div>
+        <div class="col-xs-12" id="speed">
+            <p> 機速： {{ speed }}</p>
+        </div>
+        <div class="col-xs-12" id="angle">
+            <p> 舵角： {{ angle }}</p>
+        </div>
+        <div class="col-xs-12" id="rotation">
+            <p>回转数： {{ rotation }}</p>
+        </div>
+    </div>
+</div>
+
+<script src="js/index.js"></script>
+<script src="js/drew.js"></script>
+<!-- <script src="js/data_dp.js"></script> -->
+</body>
+</html>

@@ -4,7 +4,7 @@ from . import views
 
 router = DefaultRouter()
 router.register(prefix='aircraft', viewset=views.AircraftViewSet)
-router.register('testflighttype', viewset=views.TestFlightTypeViewSet)
+router.register('tftype', viewset=views.TestFlightTypeViewSet)
 router.register('flighttype', viewset=views.FlightTypeViewSet)
 router.register('flightdata', viewset=views.FlightDataViewSet)
 api_v1 = [path('v1/', include(router.urls))]
