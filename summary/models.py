@@ -1,15 +1,13 @@
 from django.db import models
 from django.utils.timezone import now
-
-
-# from aircraft.models import TestFlightType
+from aircraft.models import TestFlightType
 
 
 class Summary(models.Model):
     time = models.DateTimeField(verbose_name='日付', default=now)
     name = models.CharField(verbose_name='氏名', max_length=50)
     tf = models.ForeignKey(
-        aircraft.TestFlightType,
+        TestFlightType,
         verbose_name='TFタイプ',
         on_delete=models.CASCADE,
         blank=False,
@@ -31,7 +29,7 @@ class Section(models.Model):
         (9, '解体撤収'),
         (10, 'その他')
     )
-    title = models.CharField(verbose_name='類名', choices=STATUS_CHOICES, default=10)
+    title = models.CharField(verbose_name='類名', choices=STATUS_CHOICES, default=10, max_length=20)
     advantage = models.CharField(verbose_name='良かった点', max_length=2000, blank=True)
     disadvantage = models.CharField('反省点', max_length=2000, blank=True)
     improvement = models.CharField('改善案', max_length=2000, blank=True)
