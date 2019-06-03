@@ -1,16 +1,22 @@
 <template>
     <div id="app">
-<!--        <img src="./assets/logo.png">-->
-        <d3_line_chart></d3_line_chart>
-<!--        <router-view/>-->
+        <!--        <img src="./assets/logo.png">-->
+        <!--        <d3_line_chart></d3_line_chart>-->
+        <aircraft></aircraft>
+        <!--        <router-view/>-->
     </div>
 </template>
 
 <script>
     import D3_line_chart from "@/components/d3_line_chart";
+    import aircraft from "@/components/aircraft";
+
     export default {
         name: 'App',
-        components: {D3_line_chart}
+        components: {
+            D3_line_chart,
+            aircraft
+        }
     }
 </script>
 
