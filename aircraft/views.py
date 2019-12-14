@@ -3,6 +3,10 @@ from rest_framework.viewsets import ModelViewSet
 from .serializers import AircraftSerializer, TestFlightTypeSerializer, FlightDataSerializer, FlightTypeSerializer
 from .models import Aircraft, TestFlightType, FlightType, FlightData
 from rest_framework.authentication import SessionAuthentication
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
+from .filter import FlightDataFilter
+# from django_filters import rest_framework
 
 
 class CsrfExemptSessionAuthentication(SessionAuthentication):
@@ -28,8 +32,10 @@ class FlightTypeViewSet(ModelViewSet):
 
 
 class FlightDataViewSet(ModelViewSet):
-    queryset = FlightData.objects.all()
+    queryset = FlightData.objects.all().order_by("-time")
     serializer_class = FlightDataSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_class = FlightDataFilter
 
 
 def home(request):
