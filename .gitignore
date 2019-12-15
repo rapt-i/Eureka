@@ -107,3 +107,4 @@ venv.bak/
 
 # data base
 */migrations/
+node_modules/*
