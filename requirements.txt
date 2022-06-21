@@ -16,7 +16,7 @@ matplotlib==3.0.2
 mccabe==0.6.1
 msgpack==0.6.1
 neovim==0.3.1
-numpy==1.15.4
+numpy==1.22.0
 pandas==0.24.2
 parso==0.4.0
 pip-autoremove==0.9.1
